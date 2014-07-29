@@ -1,0 +1,33 @@
+<!-- Form Screen -->
+	<div class="centerFloats" ng-hide="totalCards===cardsInDeck">
+		<h3>Total cards in deck:</h3>
+			<input class="inputForm" placeholder="Enter a number here" ng-model="cardsInDeck">
+		</input>
+		
+		<h3>Play with special cards?</h3>
+			<select class="inputChoice" ng-model="totalSpecials" value="3">
+				<option value="3" selected="selected">Hunter & Oracle (default)</option>
+				<option>Just Werewolfs</option>
+				<option>With a Hunter</option>
+				<option>With an Oracle</option>
+				<option>Hunter & Oracle with another special</option>
+			</select>
+
+		<div class="buttonHolder">
+			<h3 class="button" ng-click="totalCards = cardsInDeck"> click to continue </h3>
+		</div>
+	</div>
+
+<!-- cheatProtect Screen -->
+	<div ng-show="totalCards===cardsInDeck">
+	<h2> Card {{currentCard}} of {{cardsInDeck}}
+	</h2>
+	<h2>
+		Click the button below when you are ready for the next card to be revealed
+	</h2>
+	<div class="buttonHolder">
+		<h3 class="button">
+			Click to continue
+		</h3>
+	</div>
+</div>
