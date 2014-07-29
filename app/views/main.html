@@ -1,14 +1,18 @@
 <div id="header">
   <h1>{{gameTitle}}</h1>
   <span  ng-hide="gameTitle === gameTitleInput">
-    <input class="inputForm" placeholder="Enter name of game here" ng-model="gameTitleInput">
+    <select class="inputForm" placeholder="Enter name of game here" ng-model="gameTitleInput">
+    <option ng-model = "werewolf" value="Werewolf">Werewolf</option>
+    <option ng-model = "mafia" value="Mafia">Mafia</option>
+    </select>
   </span>
 </div>
+
 
   <span ng-hide="gameTitle === gameTitleInput">
 <div class="buttonHolder">
 
-<h3 ui-sref="form" class="button" id="nameButton" ng-click="gameTitle = gameTitleInput;" ng-model="titleHider">click to continue </h3>
+<h3 ui-sref="form" class="button" id="nameButton" ng-click="equal(); setCards(gameTitleInput); gameTitle = gameTitleInput;" ng-model="titleHider">click to continue </h3>
 
 </div>
   </span>

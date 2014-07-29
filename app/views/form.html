@@ -1,23 +1,32 @@
 <!-- Form Screen -->
 	<div class="centerFloats" ng-hide="totalCards===cardsInDeck">
-		<h3>Total cards in deck:</h3>
-			<input class="inputForm" placeholder="Enter a number here" ng-model="cardsInDeck">
-		</input>
+		<h3>Total players (excluding the narrator):</h3>
+			<select class="inputForm" ng-model="cardsInDeck">
+			<option ng-repeat="num in numbers">{{num}}</option>
+			</select>		
+<!-- 			<input class="inputForm" placeholder="Enter a number here" ng-model="cardsInDeck">
+		</input> -->
 		
-		<h3>Play with special cards?</h3>
-			<select class="inputChoice" ng-model="totalSpecials" value="3">
-				<option value="3" selected="selected">Hunter & Oracle (default)</option>
-				<option>Just Werewolfs</option>
-				<option>With a Hunter</option>
-				<option>With an Oracle</option>
-				<option>Hunter & Oracle with another special</option>
-			</select>
+		<h3>Which special cards will be played?</h3>
+				<input type="checkbox" checked ng-model="badGuy.one"> {{villain}}</input>
+				<input type="checkbox" checked ng-model="badGuy.two"> {{villain}}</input>
+				<input type="checkbox" ng-model="badGuy.three"> {{villain}}</input>
+				<input type="checkbox" ng-model="badGuy.four"> {{villain}}</input>
+				<input type="checkbox" ng-model="badGuy.super"> {{alphaBadGuy}}</input> <br/> <br/>
+				<input type="checkbox" checked ng-model="defender.one"> {{hunter}}</input>
+				<input type="checkbox" ng-model="defender.two"> {{hunter}}</input>
+				<input type="checkbox" checked ng-model="special.seer"> {{seer}}</input>
+				<input type="checkbox" ng-model="special.peeker"> {{peeker}}</input>
+				<input type="checkbox" ng-model="special.idiot"> {{villageIdiot}}</input> <br/> <br/>
+				<input type="checkbox" ng-model="special.saver"> {{saver}}</input>
+				<input type="checkbox" ng-model="special.judge"> {{judge}}</input>
 
 		<div class="buttonHolder">
 			<h3 class="button" ng-click="totalCards = cardsInDeck"> click to continue </h3>
 		</div>
 	</div>
-
+{{gameTitle}}
+{{gameTitleInput}}
 <!-- cheatProtect Screen -->
 	<div ng-show="totalCards===cardsInDeck">
 	<h2> Card {{currentCard}} of {{cardsInDeck}}
