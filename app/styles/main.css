@@ -1,6 +1,11 @@
 body {
 background: url(/../images/crossword.png);
 }
+li {
+list-style-type: circle;
+line-height: 1.5em;
+}
+
 #header {
 text-align: center;
 padding-top:30px;
@@ -10,10 +15,11 @@ padding-top:30px;
 text-align: center;
 }
 
-.centerFloats {
-/*float:left;
-width:50%;
-*/}
+#gameTitle {
+display:inline-block;
+padding-bottom: 15px;
+border-bottom: 1px solid;
+}
 
 .inputForm {
 font-size: 18px;
@@ -53,4 +59,22 @@ border-radius: 5px;
 }
 .hidden{
 display:none;
+}
+
+.specialCardOptionHolder {
+width: 40%;
+margin-left: 5%;
+float: left;
+}
+.listCentered {
+margin: auto;
+text-align: left;
+display: inline-block;
+}
+#heroCards {
+border-left: 1px solid;
+}
+.homeButtons {
+display: inline-block;
+margin:12px;
 }

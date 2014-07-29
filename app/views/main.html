@@ -1,21 +1,26 @@
 <div id="header">
-  <h1>{{gameTitle}}</h1>
-  <span  ng-hide="gameTitle === gameTitleInput">
+  <h1 id="gameTitle">{{gameTitle}}</h1>
+<!--   <span  ng-hide="hide1">
     <select class="inputForm" placeholder="Enter name of game here" ng-model="gameTitleInput">
     <option ng-model = "werewolf" value="Werewolf">Werewolf</option>
     <option ng-model = "mafia" value="Mafia">Mafia</option>
     </select>
-  </span>
+  </span> -->
 </div>
 
 
-  <span ng-hide="gameTitle === gameTitleInput">
+  <span ng-hide="hide1">
 <div class="buttonHolder">
-
-<h3 ui-sref="form" class="button" id="nameButton" ng-click="equal(); setCards(gameTitleInput); gameTitle = gameTitleInput;" ng-model="titleHider">click to continue </h3>
-
+<div class="homeButtons">
+<h3 ui-sref="form" class="button" id="nameButton" ng-click="hide1 = true; gameTitle = 'Werewolf'" ng-model="titleHider">Werewolf </h3>
+</div>
+<div class="homeButtons">
+<h3 ui-sref="form2" class="button" id="nameButton" ng-click="gameTitle = 'Mafia'; hide1 = true;"> Mafia
+</h3>
+</div>
 </div>
   </span>
+
 <div id="main">
   <div ui-view>
 

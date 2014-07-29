@@ -12,57 +12,62 @@
 			NOTE: For a balanced game, statistically speaking, one should start out with having as many "villains" as the square root of the amount of the total players.  For example, with 16 people playing (excluding the narrator), there should be 4 villains.
 		</h4>
 			<div class="specialCardOptionHolder">
-				<h3> Villains </h3>
-				<ul class="listCentered">
+			<h3> Villains </h3>
+			<ul class="listCentered">
 				<li>
-				<input type="checkbox" checked ng-model="badGuy.one"> {{w.villain}}</input>
+				<input type="checkbox" checked ng-model="badGuy.one"> {{m.villain}}</input>
 				</li>
 				<li>
-				<input type="checkbox" checked ng-model="badGuy.two"> {{w.villain}}</input>
+				<input type="checkbox" checked ng-model="badGuy.two"> {{m.villain}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.three"> {{w.villain}}</input>
+				<input type="checkbox" ng-model="badGuy.three"> {{m.villain}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.four"> {{w.villain}}</input>
+				<input type="checkbox" ng-model="badGuy.four"> {{m.villain}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.super"> {{w.alphaBadGuy}}</input>
+				<input type="checkbox" ng-model="badGuy.super"> {{m.alphaBadGuy}}</input>
+				</li>
+				<li>
+				<input type="checkbox" ng-model="special.idiot"> {{m.villageIdiot}}</input>
 				</li>
 				</ul>
-				 <br/> <br/>
-			</div>	
-			<div class="specialCardOptionHolder">
+
+					<br/> <br/>
+			</div>
+			<div class="specialCardOptionHolder" id="heroCards">
 				<h3> Heroes </h3>
 				<ul class="listCentered">
 				<li>
-				<input type="checkbox" checked ng-model="defender.one"> {{w.hunter}}</input>
+				<input type="checkbox" checked ng-model="defender.one"> {{m.hunter}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="defender.two"> {{w.hunter}}</input>
+				<input type="checkbox" ng-model="defender.two"> {{m.hunter}}</input>
 				</li>
 				<li>
-				<input type="checkbox" checked ng-model="special.seer"> {{w.seer}}</input>
+				<input type="checkbox" checked ng-model="special.seer"> {{m.seer}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.peeker"> {{w.peeker}}</input>
+				<input type="checkbox" ng-model="special.peeker"> {{m.peeker}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.idiot"> {{w.villageIdiot}}</input> 
+				<input type="checkbox" ng-model="special.saver"> {{m.saver}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.saver"> {{w.saver}}</input>
-				</li>
-				<li>
-				<input type="checkbox" ng-model="special.judge"> {{w.judge}}</input> <br/> <br/>
+				<input type="checkbox" ng-model="special.judge"> {{m.judge}}</input>
 				</li>
 				</ul>
-				</div>
+
+				 <br/> <br/>
+
+			</div>
+
 		<div class="buttonHolder">
 			<h3 class="button" ng-click="totalCards = cardsInDeck"> click to continue </h3>
 		</div>
 	</div>
-
+	
 <!-- cheatProtect Screen -->
 	<div ng-show="totalCards===cardsInDeck">
 	<h2> Card {{currentCard}} of {{cardsInDeck}}
@@ -73,6 +78,7 @@
 	<div class="buttonHolder">
 		<h3 class="button">
 			Click to continue
-		</h3> <br/><br/>
+		</h3>
+
 	</div>
 </div>

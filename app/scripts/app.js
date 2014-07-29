@@ -19,6 +19,10 @@
       templateUrl: 'views/cheatProtect.html'
     })
 
+     .state('form2', {
+    url:"/form2",
+    templateUrl: "views/form2.html"
+    })
     // .state('interests', {
     //  url: '/interests',
     //  templateUrl: 'templates/interests.html'
