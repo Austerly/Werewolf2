@@ -23,10 +23,11 @@
     url:"/form2",
     templateUrl: "views/form2.html"
     })
-    // .state('interests', {
-    //  url: '/interests',
-    //  templateUrl: 'templates/interests.html'
-    // })
+     .state('card', {
+    url:"/card",
+    templateUrl: "views/card.html"
+    })
+
   });
   // setTimeout(function(){
   //  var oldHash = window.location.hash
