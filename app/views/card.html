@@ -1,17 +1,17 @@
 <span>
-<div>
+<div ng-model="falser">
 	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck.normals}}
 	</h2>
 	<div class="card">
 		<h2>
 			You are a...
 		</h2>
-		<h1 class="displayDependent"> 
+		<h1 class="displayDependent" ng-hide="falser"> 
 			{{cardkeeper.cardsInDeck.hand[cardkeeper.currentCard - 1]}}
 		</h1>
 	</div>
 	<div class="buttonHolder">
-		<h3 class="button" ui-sref="cheatProtect" ng-click="cardkeeper.currentCard = cardkeeper.currentCard + 1;">
+		<h3 class="button" ui-sref="cheatProtect" ng-click="cardkeeper.currentCard = cardkeeper.currentCard + 1; falser = true;">
 			Click to continue
 		</h3>
 	</div>

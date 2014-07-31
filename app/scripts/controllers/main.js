@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('werewolfApp').controller('MainCtrl',
- function($scope, cardKeeper, shuffler){
+ function($scope, cardKeeper, shuffler, $timeout){
 
 	//Logic variables declared
 	$scope.cardkeeper = cardKeeper;
@@ -146,6 +146,11 @@ for (var i = 0; i < 26; i++) {
 	$scope.m.saver = "Guardian Angel";
 	$scope.m.judge = "Judge";
 
+$scope.adder = function () {
+$timeout(
+$scope.cardkeeper.currentCard++, 200);
+return $scope.cardkeeper.currentCard;
+}
 
 //Gather special cards;
 
