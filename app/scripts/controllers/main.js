@@ -1,31 +1,56 @@
 'use strict';
 
 angular.module('werewolfApp').controller('MainCtrl',
- function($scope){
+ function($scope, cardKeeper, shuffler){
+
 	//Logic variables declared
+	$scope.cardkeeper = cardKeeper;
+	$scope.shuffle = shuffler;
 	$scope.test = "Werewolf";
 	$scope.falser = false;
 	$scope.gameTitleInput;
 	$scope.gameTitle = "What game are we playing today?";
 	$scope.totalCards = 1;
-	$scope.currentCard = 1;
-	$scope.cardsInDeck = 0;
+	$scope.cardkeeper.currentCard = 1;
+	$scope.cardkeeper.cardsInDeck = 1;
+
+//create shuffling app
+	//declare variables to keep track of how many cards, and the deck being used;
+	$scope.cardkeeper.counter = 0;
+	$scope.cardkeeper.hand;
+$scope.cardkeeper.tester = parseInt($scope.cardkeeper.cardsInDeck);
+	//create for loop to localize all cards being played with in the hand;
+	$scope.cardkeeper.deck = function () {
+		for (i = 0; i < 4; i++) {
+			if (cardkeeper.badGuy[i] === true) {
+				cardkeeper.counter ++;
+				cardkeeper.hand.push(cardkeeper.badGuy[i]);
+				console.log(cardkeeper.hand);
+			}
+		}
+	}
+	$scope.cardkeeper.logger = function () {
+		console.log($scope.cardkeeper);
+	}
+$scope.cardkeeper.total = parseInt($scope.cardkeeper.cardsInDeck) + ($scope.counts);
+
+
 	$scope.hide1;
 	$scope.specialCards = 0;
 
 	//role variables for cards
-	$scope.badGuy = {
+	$scope.cardkeeper.badGuy = {
 		one: true, 
 		two: true,
 		Three: false,
 		Four: false,
 		super: false
 	};
-	$scope.defender = {
+	$scope.cardkeeper.defender = {
 		one: true,
 		two: false
 	};
-	$scope.special = {
+	$scope.cardkeeper.special = {
 		seer: true,
 		peeker: false,
 		idiot: false, 
@@ -37,7 +62,7 @@ angular.module('werewolfApp').controller('MainCtrl',
      $scope.change = function() {
         $scope.counts++;
       };
-	$scope.totalCardsInDeck = $scope.cardsInDeck + $scope.counts;
+
 //create number options for amount of people playing
 $scope.numbers = [];
 for (var i = 0; i < 26; i++) {
@@ -54,14 +79,7 @@ for (var i = 0; i < 26; i++) {
 	saver: "Guardian Angel",
 	judge: "Judge"
 	};
-	// $scope.w.villain = "Werewolf";
-	// $scope.w.alphaBadGuy = "Alpha Werewolf";
-	// $scope.w.hunter = "Hunter" ;
-	// $scope.w.seer = "Seer";
-	// $scope.w.peeker = "Little Girl";
-	// $scope.w.villageIdiot = "Village Idiot";
-	// $scope.w.saver = "Guardian Angel";
-	// $scope.w.judge = "Judge";
+
 console.log($scope.w);
 
 //variables for defining Mafia cards
@@ -75,9 +93,6 @@ console.log($scope.w);
 	$scope.m.saver = "Guardian Angel";
 	$scope.m.judge = "Judge";
 
-/* 
-**********JQUERY SECTION, FOR SAKE OF TIME, DUE TO ISSUES WITH ANGULAR *********
-*/
 
 //Gather special cards;
 
@@ -89,33 +104,6 @@ console.log($scope.w);
 	var wCards = $scope.w;
 
 	$scope.card = {};
-
-$(document).ready(function () {
-
-	$('#nextCard').click(function() {
-
-		var badGuy = $scope.badGuy;
-
-
-		for (i=0; i > counter; i++) 
-		{
-			alert("for works");
-
-			if (badGuy[i]) 
-			{
-				hand.push(badGuy[i]);
-				console.log(hand);
-				console.log("cardCounter");
-				alert("doggone it!");
-			}
-
-			else 
-			{
-			console.log("no dice");
-			}
-		};
-	});
-});
 
 });
 

@@ -1,6 +1,6 @@
 <span>
 	<div>
-	<h2> Card {{currentCard}} of {{cardsInDeck}}
+	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck}}
 	</h2>
 	<h2>
 		Click the button below when you are ready for the next card to be revealed
@@ -9,6 +9,8 @@
 		<h3 class="button" ng-click="falser = true;" id="nextCard"  ui-sref="card">
 			Click to continue
 		</h3> <br/><br/>
+				{{cardkeeper}}
+
 	</div>
 </div>
 </span>
