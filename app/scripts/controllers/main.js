@@ -12,51 +12,106 @@ angular.module('werewolfApp').controller('MainCtrl',
 	$scope.gameTitle = "What game are we playing today?";
 	$scope.totalCards = 1;
 	$scope.cardkeeper.currentCard = 1;
-	$scope.cardkeeper.cardsInDeck = 1;
+	$scope.cardkeeper.cardsInDeck = {
+		badGuy: [true, true, false, false],
+		alpha: [false],
+		defender: [true, false],
+		seer: [true],
+		peeker: [false],
+		idiot: [false],
+		saver: [false],
+		judge: [false]
+	};
+
+	$scope.cardkeeper.cardsInDeck.normals = 0;
 
 //create shuffling app
 	//declare variables to keep track of how many cards, and the deck being used;
 	$scope.cardkeeper.counter = 0;
-	$scope.cardkeeper.hand;
-$scope.cardkeeper.tester = parseInt($scope.cardkeeper.cardsInDeck);
-	//create for loop to localize all cards being played with in the hand;
-	$scope.cardkeeper.deck = function () {
-		for (i = 0; i < 4; i++) {
-			if (cardkeeper.badGuy[i] === true) {
-				cardkeeper.counter ++;
-				cardkeeper.hand.push(cardkeeper.badGuy[i]);
-				console.log(cardkeeper.hand);
-			}
-		}
-	}
-	$scope.cardkeeper.logger = function () {
-		console.log($scope.cardkeeper);
-	}
-$scope.cardkeeper.total = parseInt($scope.cardkeeper.cardsInDeck) + ($scope.counts);
+	$scope.cardkeeper.cardsInDeck.hand = [];
 
+//create playing deck from chosen cards;
+$scope.check = function() {
+	console.log($scope.cardkeeper.cardsInDeck);
+
+	//Put normal cards in hand to play;
+	var normalCards = $scope.cardkeeper.cardsInDeck.normals;
+	var counter = 0;
+
+	while (counter < normalCards) {
+		$scope.cardkeeper.cardsInDeck.hand.push("Citizen");
+
+		counter++;
+	}
+
+	//Put special cards in hand to play;
+    for (i=0; i < 4; i++) {
+
+    	if ($scope.cardkeeper.cardsInDeck.badGuy[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.badGuy[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Werewolf");
+    	}
+
+    	if ($scope.cardkeeper.cardsInDeck.alpha[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.alpha[i]);
+    		$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Alpha Werewolf");
+    	}
+
+    	if ($scope.cardkeeper.cardsInDeck.defender[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.defender[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Hunter");
+    	}
+
+    	if ($scope.cardkeeper.cardsInDeck.seer[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.seer[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Seer");
+    	}
+
+       	if ($scope.cardkeeper.cardsInDeck.peeker[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.peeker[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Little Girl");
+    	}
+
+       	if ($scope.cardkeeper.cardsInDeck.idiot[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.idiot[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Village Idiot");
+    	}
+
+       	if ($scope.cardkeeper.cardsInDeck.saver[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.saver[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Guardian Angel");
+    	}
+
+       	if ($scope.cardkeeper.cardsInDeck.judge[i]) {
+    		console.log($scope.cardkeeper.cardsInDeck.judge[i]);
+			$scope.cardkeeper.cardsInDeck.normals ++;
+    		$scope.cardkeeper.cardsInDeck.hand.push("Judge");
+    	}
+    }
+
+    function arrayShuffle(theArray) {
+ 	var len = theArray.length;
+	var i = len;
+	 while (i--) {
+	 	var p = parseInt(Math.random()*len);
+		var t = theArray[i];
+  		theArray[i] = theArray[p];
+	  	theArray[p] = t;
+ 	}
+};
+	arrayShuffle($scope.cardkeeper.cardsInDeck.hand);
+
+    }
 
 	$scope.hide1;
 	$scope.specialCards = 0;
-
-	//role variables for cards
-	$scope.cardkeeper.badGuy = {
-		one: true, 
-		two: true,
-		Three: false,
-		Four: false,
-		super: false
-	};
-	$scope.cardkeeper.defender = {
-		one: true,
-		two: false
-	};
-	$scope.cardkeeper.special = {
-		seer: true,
-		peeker: false,
-		idiot: false, 
-		saver: false,
-		judge: false
-	}
 
 	$scope.counts = 4;
      $scope.change = function() {
@@ -68,7 +123,7 @@ $scope.numbers = [];
 for (var i = 0; i < 26; i++) {
 		$scope.numbers.push(i);
 }
-//variables for defining Werewolf cards
+//variables for defining Werewolf cards to user
 	$scope.w = {
 	villain: "Werewolf",
 	alphaBadGuy: "Alpha Werewolf",
@@ -79,8 +134,6 @@ for (var i = 0; i < 26; i++) {
 	saver: "Guardian Angel",
 	judge: "Judge"
 	};
-
-console.log($scope.w);
 
 //variables for defining Mafia cards
 	$scope.m = {};
@@ -99,11 +152,6 @@ console.log($scope.w);
 //Take all the cards and add to the special cards in an array;
 //randomize data in the array;
 //deal cards;
-	var hand;
-	var counter = $scope.w.length;
-	var wCards = $scope.w;
-
-	$scope.card = {};
 
 });
 

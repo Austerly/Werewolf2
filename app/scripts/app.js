@@ -27,6 +27,14 @@
     url:"/card",
     templateUrl: "views/card.html"
     })
+     .state('home', {
+    url:"/home",
+    templateUrl: "views/main.html"
+    })
+     .state('endOfShuffle', {
+    url:"/endOfShuffle",
+    templateUrl: "views/endOfGame.html"
+    })
 
   });
   // setTimeout(function(){

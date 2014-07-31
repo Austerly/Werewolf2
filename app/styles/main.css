@@ -79,3 +79,17 @@ border-left: 1px solid;
 display: inline-block;
 margin:12px;
 }
+.card {
+background: white;
+width: 230px;
+height: 300px;
+display: inline-block;
+padding: 30px;
+border-radius: 5px;
+background: url(/../images/cross_scratches.png);
+opacity: 0.6;
+color: black;
+}
+.displayDependent {
+display:inherit;
+}

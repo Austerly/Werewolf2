@@ -3,12 +3,11 @@
 	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck.normals}}
 	</h2>
 	<div class="card">
-		<h2>
-			You are a...
-		</h2>
-		<h1 class="displayDependent"> 
-			{{cardkeeper.cardsInDeck.hand[cardkeeper.currentCard - 1]}}
+		<h1> 
+			That's all the cards, <br/>Thanks for playing!
 		</h1>
+		<h2> If you'd like to play again, just refresh the page
+		</h2>
 	</div>
 	<div class="buttonHolder">
 		<h3 class="button" ui-sref="cheatProtect" ng-click="cardkeeper.currentCard = cardkeeper.currentCard + 1;">
