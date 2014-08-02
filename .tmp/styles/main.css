@@ -1,5 +1,7 @@
 body {
-background: url(/../images/crossword.png);
+background: url(../images/woodTexture_lightened.png);
+background-size: 100%;
+font-size: 1.1em;
 }
 li {
 list-style-type: circle;
@@ -50,10 +52,15 @@ padding:30px;
 }
 
 .container {
-background: rgba(54, 64, 44, .5);
-color: #36402C;
+background: rgba(255, 255, 255, .5);
+background-size: 100%;
+color: black;
+text-shadow: 1px 1px 3px white;
 margin:30px 10%;
 border-radius: 5px;
+font-family: cursive;
+padding: 30px;
+padding-top:0px;
 }
 .hidden{
 display:none;
@@ -83,10 +90,21 @@ height: 300px;
 display: inline-block;
 padding: 30px;
 border-radius: 5px;
-background: url(/../images/paper.png);
+background: url(../images/paper.png);
 opacity: 0.6;
 color: black;
+box-shadow: 1px 1px 2px black;
+opacity: 1;
+-webkit-transform: rotate(2deg);
 }
 .displayDependent {
 display:inherit;
+font-family: cursive;
+}
+.mirror {
+-webkit-transform: rotate(180deg);
+padding-bottom: 10px;
+}
+.cardWriting {
+margin-top:0;
 }

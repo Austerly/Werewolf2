@@ -3,12 +3,21 @@
 	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck.normals}}
 	</h2>
 	<div class="card">
-		<h2>
+		<h2 class="cardWriting">
 			You are a...
 		</h2>
-		<h1 class="displayDependent" ng-hide="falser"> 
+		<h1 class="displayDependent cardWriting" ng-hide="falser" > 
 			{{cardkeeper.cardsInDeck.hand[cardkeeper.currentCard - 1]}}
 		</h1>
+	<div class="mirror">
+		<h2 class="cardWriting">
+			You are a...
+		</h2>
+		<h1 class="displayDependent cardWriting" ng-hide="falser"> 
+			{{cardkeeper.cardsInDeck.hand[cardkeeper.currentCard - 1]}}
+		</h1>
+		</div>
+
 	</div>
 	<div class="buttonHolder">
 		<h3 class="button" ui-sref="cheatProtect" ng-click="cardkeeper.currentCard = cardkeeper.currentCard + 1; falser = true;">
