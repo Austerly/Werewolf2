@@ -155,7 +155,7 @@ angular.module('werewolfApp').controller('MainCtrl',
 
 
 		var current = parseFloat($scope.cardkeeper.currentCard);
-		var outOf = parseFloat($scope.cardkeeper.cardsInDeck.normals);
+		var outOf = parseFloat($scope.cardkeeper.cardsInDeck.normals) + 1;
 
 		console.log(current);
 		console.log(outOf);
