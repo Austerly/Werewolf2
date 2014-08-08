@@ -1,84 +1,72 @@
 <!-- Form Screen -->
 	<div class="centerFloats" ng-hide="totalCards===cardsInDeck">
-		<h3>Total players (excluding the narrator):</h3>
-			<select class="inputForm" ng-model="cardsInDeck">
-			<option ng-repeat="num in numbers">{{num}}</option>
+		<h3>Amount of normal cards:</h3>
+			<select class="inputForm" ng-model="cardkeeper.cardsInDeck.normals">
+			<option ng-repeat="num in numbers" value={{num}}>{{num}}</option>
 			</select>		
-<!-- 			<input class="inputForm" placeholder="Enter a number here" ng-model="cardsInDeck">
-		</input> -->
 		
 		<h3>Which special cards will be played?</h3>
 		<h4>
 			NOTE: For a balanced game, statistically speaking, one should start out with having as many "villains" as the square root of the amount of the total players.  For example, with 16 people playing (excluding the narrator), there should be 4 villains.
 		</h4>
 			<div class="specialCardOptionHolder">
-			<h3> Villains </h3>
-			<ul class="listCentered">
+				<h3> Villains </h3>
+				<ul class="listCentered">
 				<li>
-				<input type="checkbox" checked ng-model="badGuy.one"> {{m.villain}}</input>
+				<input type="checkbox" checked ng-model="cardkeeper.cardsInDeck.badGuy[0]"> {{m.villain}}
+				</input>
 				</li>
 				<li>
-				<input type="checkbox" checked ng-model="badGuy.two"> {{m.villain}}</input>
+				<input type="checkbox" checked ng-model="cardkeeper.cardsInDeck.badGuy[1]"> {{m.villain}}
+				</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.three"> {{m.villain}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.badGuy[2]"> {{m.villain}}
+				</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.four"> {{m.villain}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.badGuy[3]"> {{m.villain}}
+				</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="badGuy.super"> {{m.alphaBadGuy}}</input>
-				</li>
-				<li>
-				<input type="checkbox" ng-model="special.idiot"> {{m.villageIdiot}}</input>
+				<input type="checkbox" 
+				ng-model="cardkeeper.cardsInDeck.alpha[0]"> {{m.alphaBadGuy}}
+				</input>
 				</li>
 				</ul>
+				 <br/> <br/>
+			</div>	
 
-					<br/> <br/>
-			</div>
-			<div class="specialCardOptionHolder" id="heroCards">
+			<div class="specialCardOptionHolder">
 				<h3> Heroes </h3>
 				<ul class="listCentered">
 				<li>
-				<input type="checkbox" checked ng-model="defender.one"> {{m.hunter}}</input>
+				<input type="checkbox" checked ng-model="cardkeeper.cardsInDeck.defender[0]" ng-change="change()"> {{m.hunter}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="defender.two"> {{m.hunter}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.defender[1]" ng-change="change()"> {{m.hunter}}</input>
 				</li>
 				<li>
-				<input type="checkbox" checked ng-model="special.seer"> {{m.seer}}</input>
+				<input type="checkbox" checked ng-model="cardkeeper.cardsInDeck.seer[0]" ng-change="change()"> {{m.seer}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.peeker"> {{m.peeker}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.peeker[0]" ng-change="change()"> {{m.peeker}}</input>
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.saver"> {{m.saver}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.idiot[0]" ng-change="change()"> {{m.villageIdiot}}</input> 
 				</li>
 				<li>
-				<input type="checkbox" ng-model="special.judge"> {{m.judge}}</input>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.saver[0]" ng-change="change()"> {{m.saver}}</input>
+				</li>
+				<li>
+				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.judge[0]" ng-change="change()"> {{m.judge}}</input> <br/> <br/>
 				</li>
 				</ul>
-
-				 <br/> <br/>
-
-			</div>
+				</div>
 
 		<div class="buttonHolder">
-			<h3 class="button" ng-click="totalCards = cardsInDeck"> click to continue </h3>
+
+			<h3 class="button" id="shuffler" ng-click="totalCards = cardsInDeck; cardclone = cardkeeper.cardsInDeck; checkMafia();"  id="nextCard"  ui-sref="cheatProtect"> Let's Shuffle! </h3>
+
 		</div>
 	</div>
-	
-<!-- cheatProtect Screen -->
-	<div ng-show="totalCards===cardsInDeck">
-	<h2> Card {{currentCard}} of {{cardsInDeck}}
-	</h2>
-	<h2>
-		Click the button below when you are ready for the next card to be revealed
-	</h2>
-	<div class="buttonHolder">
-		<h3 class="button">
-			Click to continue
-		</h3>
-
-	</div>
-</div>

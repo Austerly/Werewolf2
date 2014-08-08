@@ -38,7 +38,7 @@ angular.module('werewolfApp').controller('MainCtrl',
 
 //variables for defining Mafia cards
 	$scope.m = {};
-	$scope.m.villain = "Mafia";
+	$scope.m.villain = "Mobster";
 	$scope.m.alphaBadGuy = "Godfather";
 	$scope.m.hunter = "Detective";
 	$scope.m.seer = "Detective";
@@ -130,6 +130,86 @@ angular.module('werewolfApp').controller('MainCtrl',
 		};
 		arrayShuffle($scope.cardkeeper.cardsInDeck.hand);
 	}
+
+	//create playing deck from chosen cards for MAFIA;
+	$scope.checkMafia = function() {
+		console.log($scope.cardkeeper.cardsInDeck);
+
+		//Put normal cards in hand to play;
+		var normalCards = $scope.cardkeeper.cardsInDeck.normals;
+		var counter = 0;
+
+		while (counter < normalCards) {
+			$scope.cardkeeper.cardsInDeck.hand.push("Citizen");
+
+			counter++;
+		}
+
+		//Put special cards in hand to play;
+	    for (i=0; i < 4; i++) {
+
+	    	if ($scope.cardkeeper.cardsInDeck.badGuy[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.badGuy[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Mobster");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.alpha[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.alpha[i]);
+	    		$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Godfather");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.defender[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.defender[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Detective");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.seer[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.seer[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Detective");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.peeker[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.peeker[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Informant");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.idiot[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.idiot[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Serial Killer");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.saver[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.saver[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Guardian Angel");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.judge[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.judge[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Judge");
+	    	}
+	    }
+
+	    function arrayShuffle(theArray) {
+	 	var len = theArray.length;
+		var i = len;
+			while (i--) {
+			 	var p = parseInt(Math.random()*len);
+				var t = theArray[i];
+		  		theArray[i] = theArray[p];
+			  	theArray[p] = t;
+		 		}
+		};
+		arrayShuffle($scope.cardkeeper.cardsInDeck.hand);
+	}
+
 
 	$scope.hide1;
 	$scope.specialCards = 0;
