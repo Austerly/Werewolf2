@@ -4,8 +4,6 @@
 			<select class="inputForm" ng-model="cardkeeper.cardsInDeck.normals">
 			<option ng-repeat="num in numbers" value={{num}}>{{num}}</option>
 			</select>		
-<!-- 			<input class="inputForm" placeholder="Enter a number here" ng-model="cardkeeper.cardsInDeck">
-		</input> -->
 		
 		<h3>Which special cards will be played?</h3>
 		<h4>
@@ -64,53 +62,11 @@
 				<input type="checkbox" ng-model="cardkeeper.cardsInDeck.judge[0]" ng-change="change()"> {{w.judge}}</input> <br/> <br/>
 				</li>
 				</ul>
-				{{parseInt(cardkeeper.cardsInDeck.normals);}}
 				</div>
 
 		<div class="buttonHolder">
 
 			<h3 class="button" id="shuffler" ng-click="totalCards = cardsInDeck; cardclone = cardkeeper.cardsInDeck; check();"  id="nextCard"  ui-sref="cheatProtect"> Let's Shuffle! </h3>
-		<!-- <h4> It looks like you want {{cardkeeper.cardsInDeck.normals}} normal cards and {{counts}} special cards, for a total of {{cardkeeper.cardsInDeck.normals + counts}} players. </h4> -->
 
 		</div>
 	</div>
-
-<!-- cheatProtect Screen -->
-<!-- <span  ng-hide="falser">
-	<div ng-show="totalCards===cardsInDeck">
-	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck}}
-	</h2>
-	<h2>
-		Click the button below when you are ready for the next card to be revealed
-	</h2>
-	<div class="buttonHolder">
-		<h3 class="button" ng-click="falser = true;">
-			Click to continue
-		</h3> <br/><br/>
-	</div>
-</div>
-</span> -->
-
-<!-- Card Screen -->
-<!-- <span>
-<div ng-show="falser" class="defaultHidden">
-	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck}}
-	</h2>
-	<h2>
-		You are a...
-	</h2>
-	<h1> {{test}}</h1>
-	<div class="buttonHolder">
-		<h3 class="button" ng-click="currentCard = currentCard + 1; falser = false;">
-			Click to continue
-		</h3>
-	</div>
-</div>
-</span>
-<script>
-document.getElementById("shuffler").onclick = function() {myFunction()};
-
-function myFunction() {
-    console.log("Cows!");
-}
-</script>

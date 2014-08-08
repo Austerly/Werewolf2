@@ -1,5 +1,5 @@
-<span>
-<div ng-model="falser">
+<span ng-show="cardkeeper.falser">
+<div>
 	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck.normals}}
 	</h2>
 	<div class="card">
@@ -22,6 +22,25 @@
 	<div class="buttonHolder">
 		<h3 class="button" ui-sref="cheatProtect" ng-click="cardkeeper.currentCard = cardkeeper.currentCard + 1; falser = true;">
 			Click to continue
+		</h3>
+	</div>
+</div>
+</span>
+
+<span ng-hide="cardkeeper.falser">
+<div>
+	<h2> Card {{cardkeeper.currentCard}} of {{cardkeeper.cardsInDeck.normals}}
+	</h2>
+	<div class="cardWide">
+		<h1> 
+			That's all the cards, <br/>Thanks for playing!
+		</h1>
+		<h2> If you'd like to play again, click below
+		</h2>
+	</div>
+	<div class="buttonHolder">
+		<h3 class="button" ng-click="reloader()">
+			Play Again!
 		</h3>
 	</div>
 </div>

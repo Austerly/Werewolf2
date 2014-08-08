@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('werewolfApp').controller('MainCtrl',
- function($scope, cardKeeper, shuffler, $timeout){
+ function($scope, cardKeeper, $timeout){
 
 	//Logic variables declared
 	$scope.cardkeeper = cardKeeper;
-	$scope.shuffle = shuffler;
 	$scope.test = "Werewolf";
-	$scope.falser = false;
+	$scope.cardkeeper.falser = true;
 	$scope.gameTitleInput;
 	$scope.gameTitle = "What game are we playing today?";
 	$scope.totalCards = 1;
@@ -25,104 +24,6 @@ angular.module('werewolfApp').controller('MainCtrl',
 
 	$scope.cardkeeper.cardsInDeck.normals = 0;
 
-//create shuffling app
-	//declare variables to keep track of how many cards, and the deck being used;
-	$scope.cardkeeper.counter = 0;
-	$scope.cardkeeper.cardsInDeck.hand = [];
-
-//create playing deck from chosen cards;
-$scope.check = function() {
-	console.log($scope.cardkeeper.cardsInDeck);
-
-	//Put normal cards in hand to play;
-	var normalCards = $scope.cardkeeper.cardsInDeck.normals;
-	var counter = 0;
-
-	while (counter < normalCards) {
-		$scope.cardkeeper.cardsInDeck.hand.push("Citizen");
-
-		counter++;
-	}
-
-	//Put special cards in hand to play;
-    for (i=0; i < 4; i++) {
-
-    	if ($scope.cardkeeper.cardsInDeck.badGuy[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.badGuy[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Werewolf");
-    	}
-
-    	if ($scope.cardkeeper.cardsInDeck.alpha[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.alpha[i]);
-    		$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Alpha Werewolf");
-    	}
-
-    	if ($scope.cardkeeper.cardsInDeck.defender[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.defender[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Hunter");
-    	}
-
-    	if ($scope.cardkeeper.cardsInDeck.seer[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.seer[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Seer");
-    	}
-
-       	if ($scope.cardkeeper.cardsInDeck.peeker[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.peeker[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Little Girl");
-    	}
-
-       	if ($scope.cardkeeper.cardsInDeck.idiot[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.idiot[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Village Idiot");
-    	}
-
-       	if ($scope.cardkeeper.cardsInDeck.saver[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.saver[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Guardian Angel");
-    	}
-
-       	if ($scope.cardkeeper.cardsInDeck.judge[i]) {
-    		console.log($scope.cardkeeper.cardsInDeck.judge[i]);
-			$scope.cardkeeper.cardsInDeck.normals ++;
-    		$scope.cardkeeper.cardsInDeck.hand.push("Judge");
-    	}
-    }
-
-    function arrayShuffle(theArray) {
- 	var len = theArray.length;
-	var i = len;
-	 while (i--) {
-	 	var p = parseInt(Math.random()*len);
-		var t = theArray[i];
-  		theArray[i] = theArray[p];
-	  	theArray[p] = t;
- 	}
-};
-	arrayShuffle($scope.cardkeeper.cardsInDeck.hand);
-
-    }
-
-	$scope.hide1;
-	$scope.specialCards = 0;
-
-	$scope.counts = 4;
-     $scope.change = function() {
-        $scope.counts++;
-      };
-
-//create number options for amount of people playing
-$scope.numbers = [];
-for (var i = 0; i < 26; i++) {
-		$scope.numbers.push(i);
-}
 //variables for defining Werewolf cards to user
 	$scope.w = {
 	villain: "Werewolf",
@@ -146,18 +47,125 @@ for (var i = 0; i < 26; i++) {
 	$scope.m.saver = "Guardian Angel";
 	$scope.m.judge = "Judge";
 
-$scope.adder = function () {
-$timeout(
-$scope.cardkeeper.currentCard++, 200);
-return $scope.cardkeeper.currentCard;
-}
+//create shuffling app
+	//declare variables to keep track of how many cards, and the deck being used;
+	$scope.cardkeeper.counter = 0;
+	$scope.cardkeeper.cardsInDeck.hand = [];
 
-//Gather special cards;
+	//create playing deck from chosen cards;
+	$scope.check = function() {
+		console.log($scope.cardkeeper.cardsInDeck);
 
-//Take all the cards and add to the special cards in an array;
-//randomize data in the array;
-//deal cards;
+		//Put normal cards in hand to play;
+		var normalCards = $scope.cardkeeper.cardsInDeck.normals;
+		var counter = 0;
 
+		while (counter < normalCards) {
+			$scope.cardkeeper.cardsInDeck.hand.push("Citizen");
+
+			counter++;
+		}
+
+		//Put special cards in hand to play;
+	    for (i=0; i < 4; i++) {
+
+	    	if ($scope.cardkeeper.cardsInDeck.badGuy[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.badGuy[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Werewolf");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.alpha[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.alpha[i]);
+	    		$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Alpha Werewolf");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.defender[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.defender[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Hunter");
+	    	}
+
+	    	if ($scope.cardkeeper.cardsInDeck.seer[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.seer[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Seer");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.peeker[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.peeker[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Little Girl");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.idiot[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.idiot[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Village Idiot");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.saver[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.saver[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Guardian Angel");
+	    	}
+
+	       	if ($scope.cardkeeper.cardsInDeck.judge[i]) {
+	    		console.log($scope.cardkeeper.cardsInDeck.judge[i]);
+				$scope.cardkeeper.cardsInDeck.normals ++;
+	    		$scope.cardkeeper.cardsInDeck.hand.push("Judge");
+	    	}
+	    }
+
+	    function arrayShuffle(theArray) {
+	 	var len = theArray.length;
+		var i = len;
+			while (i--) {
+			 	var p = parseInt(Math.random()*len);
+				var t = theArray[i];
+		  		theArray[i] = theArray[p];
+			  	theArray[p] = t;
+		 		}
+		};
+		arrayShuffle($scope.cardkeeper.cardsInDeck.hand);
+	}
+
+	$scope.hide1;
+	$scope.specialCards = 0;
+
+	$scope.counts = 4;
+     $scope.change = function() {
+        $scope.counts++;
+      };
+
+	//create number options for amount of people playing
+	$scope.numbers = [];
+	for (var i = 0; i < 26; i++) {
+			$scope.numbers.push(i);
+	}
+
+	$scope.adder = function () {
+	$timeout(
+	$scope.cardkeeper.currentCard++, 200);
+	return $scope.cardkeeper.currentCard;
+	}
+	$scope.cardkeeper.falseFinder = function () {
+		console.log("Before if");
+
+
+		var current = parseFloat($scope.cardkeeper.currentCard);
+		var outOf = parseFloat($scope.cardkeeper.cardsInDeck.normals);
+
+		console.log(current);
+		console.log(outOf);
+
+		if (current === outOf) 
+		{
+			$scope.cardkeeper.falser = false;
+		}
+	}
+	$scope.reloader = function () {
+		return location.reload(true);
+	} 
 });
-
-

@@ -35,6 +35,10 @@
     url:"/endOfShuffle",
     templateUrl: "views/endOfGame.html"
     })
+     .state('main', {
+    url:"/main",
+    templateUrl: "views/main.html"
+    })
 
   });
   // setTimeout(function(){
