@@ -117,6 +117,9 @@ font-family: cursive;
 }
 .mirror {
 -webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+-o-transform: rotate(180deg);
 padding-bottom: 10px;
 }
 .cardWriting {
